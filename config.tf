@@ -59,7 +59,7 @@ resource "yandex_compute_instance" "instance" {
   }
 
   network_interface {
-    subnet_id = "${yandex_vpc_subnet.subnet.id}"
+    subnet_id = yandex_vpc_subnet.subnet.id
   }
 
   metadata = {
@@ -73,6 +73,6 @@ resource "yandex_vpc_network" "network" {
 
 resource "yandex_vpc_subnet" "subnet" {
   zone           = "ru-central1-a"
-  network_id     = "${yandex_vpc_network.network.id}"
-  v4_cidr_blocks = ["84.201.175.62/24"]
+  network_id     = yandex_vpc_network.network.id
+  v4_cidr_blocks = ["192.168.15.0/24"]
 }
