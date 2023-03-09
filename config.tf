@@ -13,7 +13,7 @@ variable "token" {
 }
 
 provider "yandex" {
-  token = var.token
+  token = "y0_AgAAAAAKG_2VAATuwQAAAADeHFMvZFOBVLIQRUuzy0dOV0XOgwsPRbc"
   cloud_id = "b1gprcjj64afi0vdqjdv"
   folder_id = "b1gpjrnl8ltbu6on2c0t"
   zone = "ru-central1-a"
