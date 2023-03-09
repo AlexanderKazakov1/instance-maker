@@ -7,8 +7,13 @@ terraform {
   }
 }
 
+variable "token" {
+  type = string
+  description = "Token"
+}
+
 provider "yandex" {
-  token = "ajea6gevat656epm0mu1"
+  token = var.token
   cloud_id = "b1gprcjj64afi0vdqjdv"
   folder_id = "b1gpjrnl8ltbu6on2c0t"
   zone = "ru-central1-a"
