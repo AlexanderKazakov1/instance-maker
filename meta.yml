@@ -1,3 +1,4 @@
+ssh_pwauth: no
 users:
   - name: user
     groups: sudo
