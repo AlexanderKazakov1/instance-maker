@@ -26,13 +26,11 @@ variable "name" {
 
 variable "cores" {
   type = string
-  default = 4
   description = "CPU cores"
 }
 
 variable "memory" {
   type = string
-  default = 4
   description = "RAM memory"
 }
 
@@ -44,7 +42,7 @@ variable "image_id" {
 
 resource "yandex_compute_instance" "instance" {
   name        = var.name
-  platform_id = "standard-v1"
+  platform_id = "standard-v3"
   zone        = "ru-central1-a"
 
   resources {
@@ -63,7 +61,7 @@ resource "yandex_compute_instance" "instance" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    user-data = file("./meta.yml")
   }
 }
 
@@ -74,5 +72,5 @@ resource "yandex_vpc_network" "network" {
 resource "yandex_vpc_subnet" "subnet" {
   zone           = "ru-central1-a"
   network_id     = yandex_vpc_network.network.id
-  v4_cidr_blocks = ["192.168.15.0/24"]
+  v4_cidr_blocks = ["10.5.0.0/24"]
 }
