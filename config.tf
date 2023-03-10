@@ -42,6 +42,7 @@ variable "image_id" {
 
 resource "yandex_compute_instance" "instance" {
   name = var.name
+  allow_stopping_for_update = true
   platform_id = "standard-v3"
   zone = "ru-central1-a"
 
