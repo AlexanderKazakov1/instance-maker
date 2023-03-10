@@ -1,6 +1,6 @@
 #cloud-config
-ssh_pwauth: no
-users:
+  ssh_pwauth: no
+  users:
   - name: user
     groups: sudo
     shell: /bin/bash
