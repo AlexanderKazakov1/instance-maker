@@ -41,9 +41,9 @@ variable "image_id" {
 }
 
 resource "yandex_compute_instance" "instance" {
-  name        = var.name
+  name = var.name
   platform_id = "standard-v3"
-  zone        = "ru-central1-a"
+  zone = "ru-central1-a"
 
   resources {
     cores  = var.cores
@@ -58,6 +58,7 @@ resource "yandex_compute_instance" "instance" {
 
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet.id
+    nat = true
   }
 
   metadata = {
@@ -70,7 +71,8 @@ resource "yandex_vpc_network" "network" {
 }
 
 resource "yandex_vpc_subnet" "subnet" {
-  zone           = "ru-central1-a"
-  network_id     = yandex_vpc_network.network.id
+  name = "generated_subnet"
+  zone = "ru-central1-a"
+  network_id = yandex_vpc_network.network.id
   v4_cidr_blocks = ["192.168.15.0/24"]
 }
